@@ -1,0 +1,44 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "User Profile",
+      "description": "Stores user-specific settings and profile information.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "Firebase Auth UID" },
+        "username": { "type": "string", "description": "Display name" },
+        "email": { "type": "string", "description": "User email" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "username", "email"]
+    },
+    "PuzzleSession": {
+      "title": "Puzzle Session",
+      "description": "A record of a completed puzzle solve.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "UID of the user" },
+        "username": { "type": "string", "description": "Username at time of solve" },
+        "algorithm": { "type": "string", "description": "Algorithm used" },
+        "moves": { "type": "integer", "description": "Number of moves in solution" },
+        "nodesExplored": { "type": "integer", "description": "Total nodes expanded" },
+        "time": { "type": "number", "description": "Computation time in seconds" },
+        "initialState": { "type": "array", "items": { "type": "integer" } },
+        "gridSize": { "type": "string", "description": "e.g. 3x3" },
+        "solvedAt": { "type": "string", "format": "date-time" },
+        "score": { "type": "integer" }
+      },
+      "required": ["userId", "algorithm", "moves", "nodesExplored", "time", "initialState", "solvedAt"]
+    }
+  },
+  "firestore": {
+    "/users/{uid}": {
+      "schema": "UserProfile",
+      "description": "User profile documents"
+    },
+    "/puzzle_sessions/{sessionId}": {
+      "schema": "PuzzleSession",
+      "description": "Global collection of all solved puzzles"
+    }
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "name": "GridShift Solver",
+  "description": "An interactive 8-Puzzle solver featuring multiple AI search algorithms (BFS, DFS, IDDFS, UCS, A*) with real-time visualization and performance metrics.",
+  "requestFramePermissions": []
+}
